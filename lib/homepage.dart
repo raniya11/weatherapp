@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20,),
-            if(weatherProvider.isloading)
+            if(weatherProvider.isLoading)
               CircularProgressIndicator()
             else if(weatherProvider.error!.isNotEmpty)
               Text("${weatherProvider.error}")
