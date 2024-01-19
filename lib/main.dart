@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp/services.dart';
-import 'package:weatherapp/homepage.dart';
+import 'package:weatherapp/screens/homepage.dart';
+import 'package:weatherapp/services/location_provider.dart';
+import 'package:weatherapp/services/weather_service_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,29 +17,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>WeatherServiceProvider())
+        ChangeNotifierProvider(create: (context)=>LocationProvider()),
+        ChangeNotifierProvider(create: (context)=>WeatherServiceProvider()),
+
       ],
       child: MaterialApp(
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // TRY THIS: Try running your application with "flutter run". You'll see
-          // the application has a blue toolbar. Then, without quitting the app,
-          // try changing the seedColor in the colorScheme below to Colors.green
-          // and then invoke "hot reload" (save your changes or press the "hot
-          // reload" button in a Flutter-supported IDE, or press "r" if you used
-          // the command line to start the app).
-          //
-          // Notice that the counter didn't reset back to zero; the application
-          // state is not lost during the reload. To reset the state, use hot
-          // restart instead.
-          //
-          // This works for code too, not just values: Most code changes can be
-          // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: HomePage(),
+          title: 'Weather App',
+          theme: ThemeData(
+
+            appBarTheme: AppBarTheme(
+              backgroundColor: Colors.transparent,
+              elevation:0,
+            ),
+
+
+
+
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );
